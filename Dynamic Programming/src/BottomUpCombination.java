@@ -3,6 +3,8 @@
  * Repeat Combination Problem.
  * 
  * Bottom up approach using pascal's triangle
+ * 
+ * O(n*r)
  *
  */
 

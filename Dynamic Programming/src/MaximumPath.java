@@ -9,6 +9,8 @@ import java.util.Random;
  * assume that n,m [1,1000]
  * each cell denoted as a(i,j) and a(i,j) [1,1000000000]
  * 
+ * O(n*m)
+ * 
  */
 
 

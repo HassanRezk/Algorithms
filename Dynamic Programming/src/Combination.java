@@ -12,6 +12,7 @@ import java.util.Arrays;
  * 
  * C(n,r) = C(n-1,r-1) + C(n-1,r)
  * 
+ * O(n*r)
  * 
  */
 
