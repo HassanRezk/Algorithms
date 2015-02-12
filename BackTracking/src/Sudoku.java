@@ -21,7 +21,7 @@ public class Sudoku {
 	public static void main(String[] args) throws FileNotFoundException {
 		grid = new int[N][N];
 		
-		in = new Scanner(new File("in.txt"));
+		in = new Scanner(new File("Sudoku.txt"));
 		for(int i = 0 ; i < N ; ++i)
 			for(int j = 0 ; j < N ; ++j)
 				grid[i][j] = in.nextInt();
