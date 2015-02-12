@@ -1,7 +1,7 @@
 
-public class TopDown {
+public class TopDown { 
 	
-	public static void sort(int[] a) {
+	public static void sort(int[] a) { // O(nlogn)
 		sort(a, 0, a.length-1);
 	}
 	
