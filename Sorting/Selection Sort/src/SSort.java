@@ -2,6 +2,7 @@
 public class SSort {
 	
 	public static void sort(int[] arr) {
+		// O(n^2) where n is the size of the array
 		for(int i = 0 ; i < arr.length ; ++i) {
 			int min = i;
 			for(int j = i+1 ; j < arr.length ; ++j)

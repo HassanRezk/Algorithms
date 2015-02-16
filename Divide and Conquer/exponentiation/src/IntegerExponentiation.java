@@ -17,6 +17,7 @@ public class IntegerExponentiation {
 		System.out.println(power(1000000006, 1000000007));
 	}
 	
+	// O(log(exponent))
 	static long power(int base, int exponent) {
 		if(exponent == 0) return 1L;
 		if((exponent&1L) == 1) 
