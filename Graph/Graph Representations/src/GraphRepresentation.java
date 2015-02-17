@@ -17,7 +17,7 @@ public class GraphRepresentation {
 		 *			2D boolean matrix cell (i,j) is true 
 		 *			only if there exist an edge from node i to node j.
 		 *		Memory Complexity:
-		 *			O(|v|^2)
+		 *			O(|V|^2)
 		 *
 		 *		Advantage:		
 		 *			Check whether two vertices are adjacent in O(1)
@@ -53,7 +53,7 @@ public class GraphRepresentation {
 		V = in.nextInt();
 		E = in.nextInt();
 		ArrayList[] adjList = new ArrayList[V+1];
-		for(int i = 0 ; i < adjList.length ; ++i)
+		for(int i = 1 ; i < adjList.length ; ++i)
 			adjList[i] = new ArrayList<Integer>();
 		
 		for(int i = 0, x, y ; i < E ; ++i) {
