@@ -1,0 +1,19 @@
+9 18
+a b 22
+a c 9
+a d 12
+b c 35
+b f 36
+b h 34
+c f 42
+c d 4
+c e 65
+d e 33
+d i 30
+e f 18
+e g 23
+f h 24
+f g 39
+g h 25
+g i 21
+h i 19
