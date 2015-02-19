@@ -6,7 +6,7 @@
  * 
  * all weights are positive.
  * 
- * Bellman Ford's Algorithm:
+ * Bellman Ford's Algorithm: O(|V|*|E|)
  *   based on the optimal substructure property of the shortest path.
  *   shortest path contains at most n-1 edges.
  *   
