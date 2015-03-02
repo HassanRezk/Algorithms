@@ -40,8 +40,10 @@ public class NegativeCycleDetector {
 		m = in.nextInt();
 		edgeList = new ArrayList<Edge>();
 		while(m-- > 0) {
-			int from = in.nextInt()-1;
-			int to = in.nextInt()-1;
+			String temp = in.next();
+			int from = temp.charAt(0) - 'a';
+			temp = in.next();
+			int to = temp.charAt(0) - 'a';
 			int weight = in.nextInt();
 			edgeList.add(new Edge(from, to, weight));
 		}
