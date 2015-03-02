@@ -39,14 +39,8 @@ public class NegativeCycleDetector {
 		n = in.nextInt();
 		m = in.nextInt();
 		edgeList = new ArrayList<Edge>();
-		while(m-- > 0) {
-			String temp = in.next();
-			int from = temp.charAt(0) - 'a';
-			temp = in.next();
-			int to = temp.charAt(0) - 'a';
-			int weight = in.nextInt();
-			edgeList.add(new Edge(from, to, weight));
-		}
+		while(m-- > 0)
+			edgeList.add(new Edge(in.nextInt()-1, in.nextInt()-1, in.nextInt()));
 		
 		if(hasNegativeCycle(0, n-1)) System.out.println("Negative Cycle Detected");
 		else System.out.println("No Negative Cycles Detected");
