@@ -12,7 +12,7 @@ public class TopDown {
 		int sz = high-low+1;
 		for(int i = low, j = mid+1, k = 0 ; k < sz ; ++k)
 			if( i > mid || (j <= high && a[j] < a[i]) ) aux[k] = a[j++];
-			else 				                        aux[k] = a[i++];
+			else                                        aux[k] = a[i++];
 		for(int j = low, k = 0 ; k < sz ; ++k, ++j)
 			a[j] = aux[k];
 	}
