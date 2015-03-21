@@ -17,7 +17,7 @@ public class MaxPQ {
 	public static void HeapSort(int[] arr) { // array must be 1-based
 		int N = arr.length;
 		--N;
-		for(int i = N<<1 ; i >= 1 ; --i) // build the heap, O(nlogn)
+		for(int i = N<<1 ; i >= 1 ; --i) // build the heap, O(n)
 			heapify(arr, N, i);
 		
 		while(N > 1) { // sorting, O(nlogn)
