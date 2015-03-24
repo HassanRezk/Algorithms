@@ -25,7 +25,6 @@ public class CuttingRod {
 	
 	static int solve(int n) {
 		if(n == 0) return 0; // base case
-		if(n < 0) return -INFINITY; // invalid case
 		if(dp[n] != -1) return dp[n];
 		int ret = -INFINITY;
 		for(int i = 1 ; i <= n ; ++i) // try all possible cuts
