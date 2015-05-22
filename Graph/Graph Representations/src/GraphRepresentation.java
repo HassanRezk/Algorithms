@@ -93,7 +93,7 @@ public class GraphRepresentation {
 			edgeList[i+1] = new Edge(y, x);
 		}
 		System.out.println("Edge List:\n"); // printing
-		for(int i = 0 ; i < edgeList.length ; i += 2) {
+		for(int i = 0 ; i < edgeList.length ; ++i) {
 			System.out.print(edgeList[i].from + " and " + edgeList[i].to);
 			System.out.println(" are adjacent.");
 		}

@@ -21,7 +21,7 @@ public class Combination {
 		visited = new boolean[N];
 		for(int i = 1 ; i <= N ; ++i)
 			arr[i-1] = i;
-		System.out.println("All Permutations:\n");
+		System.out.println("All Combinations:\n");
 		print(0,0);
 	}
 	

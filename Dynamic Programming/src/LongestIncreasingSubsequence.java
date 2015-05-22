@@ -9,38 +9,42 @@ import java.util.Arrays;
 
 public class LongestIncreasingSubsequence {
 
-	public static final int N = 15;
+	public static final int N = 16;
 	
 	static int[] a;
 	static int[] dp;
+	static int[] trace;
 	
 	public static void main(String[] args) {
-		a = new int[]{0, 8, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
+		a = new int[]{10, 0, 8, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
 		dp = new int[N];
-		Arrays.fill(dp, -1);
-		System.out.println("Size of LIS is: " + lis(0));
-		System.out.println("LIS\n");
-		print(0, lis(0));
-	}
-	
-	static int lis(int i) { // O(n^2)
-		if(i == N) return 0;
-		if(dp[i] != -1) return dp[i];
-		int ret = 1;
-		for(int j = i + 1 ; j < N ; ++j)
-			if(a[j] > a[i] && 1 + lis(j) > ret)
-				ret = 1 + lis(j);
-		return dp[i] = ret;
-	}
-	
-	static void print(int i, int ans) {
-		if(i == N || ans == 0) return;
-		for(int j = i ; j < N ; ++j)
-			if(dp[j] == ans) {
-				System.out.print(a[j] + " ");
-				print(j+1, ans-1);
-				return;
+		trace = new int[N];
+		Arrays.fill(dp, 1);
+		for(int i = 1 ; i < N ; ++i) {
+			trace[i] = i;
+			for(int j = 0 ; j < i ; ++j)
+				if(a[i] > a[j] && dp[i] < dp[j] + 1) {
+					dp[i] = dp[j] + 1;
+					trace[i] = j;
+				}
+		}
+		int lis = 0, idx = -1;
+		for(int i = 0 ; i < N ; ++i)
+			if(dp[i] > lis) {
+				idx = i;
+				lis = dp[i];
 			}
+		System.out.println("Length of LIS = " + lis);
+		System.out.print("The Sequence : ");
+		get_sequence(idx);
 	}
 	
+	static void get_sequence(int i) {
+		if(trace[i] == i) {
+			System.out.print(a[i] + " ");
+			return;
+		}
+		get_sequence(trace[i]);
+		System.out.print(a[i] + " ");
+	}
 }

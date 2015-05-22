@@ -13,7 +13,7 @@ public class Factorization {
 	static ArrayList<Integer> prime;
 	static boolean[] isPrime;
 	
-	static int N = (int)(1e6) + 3;
+	static final int N = (int)(1e6) + 3;
 	
 	public static void main(String[] args) {
 		sieve();//Precalculation
@@ -24,16 +24,17 @@ public class Factorization {
 	}
 	
 	static void sieve() {
-		isPrime = new boolean[N];
+		final int SIEVE = (int)Math.sqrt(N) + 1;
+		isPrime = new boolean[SIEVE];
 		prime = new ArrayList<Integer>();
 		
 		Arrays.fill(isPrime, true);
 		isPrime[0] = isPrime[1] = false;
-		for(int i = 2 ; i < N ; ++i)
+		for(int i = 2 ; i < SIEVE ; ++i)
 			if(isPrime[i]) {
 				prime.add(i);
-				for(long j = (long)i*i ; j < N ; j += i)
-					isPrime[(int)j] = false;
+				for(int j = i*i ; j < SIEVE ; j += i)
+					isPrime[j] = false;
 			}
 	}
 	

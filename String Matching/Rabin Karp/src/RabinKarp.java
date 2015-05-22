@@ -63,7 +63,7 @@ public class RabinKarp {
 	
 	static long power(long base, int exp) {
 		if(exp == 0) return 1;
-		if((base&1) == 1) return ( (base%M) * (power(base, exp-1)%M) )%M;
+		if((exp&1) == 1) return ( (base%M) * (power(base, exp-1)%M) )%M;
 		long ret = power(base, exp/2)%M;
 		return (ret*ret)%M;
 	}
