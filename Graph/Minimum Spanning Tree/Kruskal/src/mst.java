@@ -73,9 +73,11 @@ class Edge implements Comparable<Edge> {
 class DisjointSets {
 	
 	private int[] parent;
+	private int[] rank;
 	
 	public DisjointSets(int N) {
-		parent = new int [N];
+		parent = new int[N];
+		rank = new int[N];
 		for(int i = 0 ; i < N ; ++i)
 			parent[i] = i;
 	}
@@ -90,7 +92,14 @@ class DisjointSets {
 		int r_i = find(i), r_j = find(j);
 		if(r_i == r_j)
 			return false;
-		parent[r_i] = r_j;
+		int rank_i = rank[i], rank_j = rank[j];
+		//Union by rank
+		if(rank_i < rank_j) parent[r_i] = r_j;
+		else if(rank_j < rank_i) parent[r_j] = r_i;
+		else {
+			parent[r_i] = r_j;
+			++rank[r_j];
+		}
 		return true;
 	}
 	
