@@ -1,0 +1,9 @@
+8
+s a
+s c
+a b
+b d
+b e
+c d
+c a
+d e
