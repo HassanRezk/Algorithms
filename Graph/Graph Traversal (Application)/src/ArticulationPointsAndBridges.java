@@ -53,8 +53,10 @@ public class ArticulationPointsAndBridges {
 			graph[from].add(to);
 			graph[to].add(from);
 		}
-		dfs(1);
+		rootChildren = 0;
+		dfsTime = 1;
 		dfsRoot = 1;
+		dfs(1);
 		if(rootChildren > 1)
 			articulationPoint.add(dfsRoot);
 		
@@ -72,13 +74,12 @@ public class ArticulationPointsAndBridges {
 		dfsLow[i] = dfsNum[i] = dfsTime++;
 		for(int j = 0 ; j < graph[i].size() ; ++j) {
 			int node = graph[i].get(j);
-			if(node == dfsParent[i]) continue;
 			if(dfsNum[node] == 0) { // unvisited
 				dfsParent[node] = i;
 				if(i == dfsRoot)
 					++rootChildren;
 				dfs(node);
-				if(dfsLow[node] > dfsNum[i])
+				if(i != dfsRoot && dfsLow[node] >= dfsNum[i])
 					articulationPoint.add(i);
 				if(dfsLow[node] > dfsNum[i]) {
 					bridgeFrom.add(i);
