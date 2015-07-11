@@ -3,7 +3,7 @@
  * 	with maximum sum.
  * 
  * Array[]: -2, 1, -3, 4, -1, 2, 1, -5, 4
- * Maximum sum: 
+ * Maximum sum = 6, [4, -1, 2, 1]
  *
  *	Dynamic programming algorithm made by Kadane:
  *		
