@@ -1,37 +1,25 @@
 /**
+ *	A better implementation for the Ford-Fulkerson method using BFS instead
+ *	of DFS reducing the running time to ==> O(|V|*|E|^2)
  *
- * The Maximum Flow Problem:
- * 			Given a directed weighted graph, source vertex 's',
- * 			target vertex 't', find the maximum flow that can go from s to s,
- * 			given that each edge has a positive capacity.
- * 
- * Ford-Fulkerson's Method:
- * 	mxf = 0
- * 	while(there exists an augmenting path from s to t)
- * 		1- find the flow 'f' along the path
- *  	2- decrease capacities of forward edges along the path by f
- *  	3- increase capacities of backward edges along the path by f
- *  	4- mxf += f
- * 	return mxf
- * 
- * Time Complexity: O(mxf*|E|)
- * 
  */
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-public class FordFulkerson {
+public class EdmondsKarp {
 
 	static Scanner in;
 	
 	static int[][] cap;
 	static int[][] flow;
 	
-	static boolean[] vis;
+	static int[] parent;
 	
 	static int n, m, s, t;
 	
@@ -67,31 +55,41 @@ public class FordFulkerson {
 	
 	static int maxFlow() {
 		int mxf = 0;
-		vis = new boolean[n];
 		flow = new int[n][n];
+		parent = new int[n];
 		while(true) {
-			Arrays.fill(vis, false);
-			int f = dfs(s, t, Integer.MAX_VALUE);
-			if(f == 0) break;
+			bfs();
+			if(parent[t] == -1) break;
+			int f = Integer.MAX_VALUE;
+			int node = t;
+			while(node != s) {
+				f = Math.min(f, 
+						cap[parent[node]][node] - flow[parent[node]][node]);
+				node = parent[node];
+			}
+			node = t;
+			while(node != s) {
+				flow[parent[node]][node] += f;
+				flow[node][parent[node]] -= f;
+				node = parent[node];
+			}
 			mxf += f;
 		}
 		return mxf;
 	}
 	
-	static int dfs(int s, int t, int f) {
-		if(vis[s]) return 0;
-		if(s == t) return f;
-		vis[s] = true;
-		for(int i = 0 ; i < n ; ++i)
-			if(cap[s][i] - flow[s][i] > 0) {
-				int temp = dfs(i, t, Math.min(f, cap[s][i] - flow[s][i]));
-				if(temp > 0) {
-					flow[s][i] += temp;
-					flow[i][s] -= temp;
-					return temp;
+	static void bfs() {
+		Arrays.fill(parent, -1);
+		Queue<Integer> q = new ArrayDeque<>();
+		q.add(s);
+		while(!q.isEmpty()) {
+			int node = q.poll();
+			for(int i = 0 ; i < n ; ++i)
+				if(parent[i] == -1 && cap[node][i] - flow[node][i] > 0) {
+					parent[i] = node;
+					q.add(i);
 				}
-			}
-		return 0;
+		}
 	}
 	
 }
