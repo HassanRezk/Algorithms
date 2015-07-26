@@ -92,7 +92,7 @@ class DisjointSets {
 		int r_i = find(i), r_j = find(j);
 		if(r_i == r_j)
 			return false;
-		int rank_i = rank[i], rank_j = rank[j];
+		int rank_i = rank[r_i], rank_j = rank[r_j];
 		//Union by rank
 		if(rank_i < rank_j) parent[r_i] = r_j;
 		else if(rank_j < rank_i) parent[r_j] = r_i;
