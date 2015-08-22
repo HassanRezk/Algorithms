@@ -3,6 +3,9 @@
  * 
  * Sequence: 0, 8, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15
  * LIS: 0, 2, 6, 9, 13, 15
+ * 
+ * Time Complexity: O(N^2)
+ * Memory Complexity: O(N)
  *
  */
 import java.util.Arrays;
